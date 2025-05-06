@@ -1,6 +1,6 @@
 ## 🚀 Introduction
 
-We are excited to introduce **Falcon-H1**, the latest evolution in the Falcon family of large language models. Built upon an advanced **hybrid architecture**—where each block integrates both **State Space Models (SSMs)** and **Attention Mechanisms**, with all channels passing through both and their outputs **summed**—Falcon-H1 sets a new benchmark in neural representation and reasoning capability.
+We are excited to introduce **Falcon-H1**, the latest evolution in the Falcon family of large language models. Built upon an advanced **hybrid architecture**—where each block integrates both **State Space Models (SSMs)** and **Attention Mechanisms**, with all channels passing through both and their outputs are finally **summed**.
 
 These models span a wide range of scales, from **500 million to 34 billion parameters**, making them suitable for both lightweight inference on edge devices and large-scale deployments in data centers.
 
