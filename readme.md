@@ -4,7 +4,7 @@ We are excited to introduce **Falcon-H1**, the latest evolution in the Falcon fa
 
 These models span a wide range of scales, from **500 million to 34 billion parameters**, making them suitable for both lightweight inference on edge devices and large-scale deployments in data centers.
 
-**Falcon-H1** was initially trained with support for **18 core languages**, extended to cover **100+ languages and dialects**, achieving state-of-the-art multilingual and reasoning performances in **instruction following**, **maths**, **coding**, and **conversational tasks**.
+**Falcon-H1** was initially trained with support for **18 core languages**, extended to cover **100+ languages**, achieving state-of-the-art multilingual and reasoning performances in **instruction following**, **maths**, **coding**, and **conversational tasks**.
 
 ## ✨ Key Highlights
 
