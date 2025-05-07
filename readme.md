@@ -60,6 +60,6 @@ You can explore the following resources to begin working with Falcon-H1:
 ## 🧠 Join the Community
 
 Got feedback or want to build with Falcon-H1?  
-Join the conversation on [Discord](#), follow us on [Hugging Face](#), visit our [official website](https://falconllm.tii.ae/), or check out our roadmap and open issues on GitHub.
+Join the conversation on [Discord](#), follow us on [Hugging Face](#), visit our [official website](https://falconllm.tii.ae/), or check out our roadmap and open issues on [GitHub](https://github.com/tiiuae/Falcon-H1/tree/main).
 
 ---
