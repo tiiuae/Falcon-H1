@@ -25,15 +25,13 @@ Built by the **Technology Innovation Institute (TII)** in Abu Dhabi, **Falcon-H1
 
 Access Falcon-H1 across platforms and resources:
 
-- 🔗 [Falcon-H Chat Interface](#)
+- 🧠 [Falcon-H1 Chat Interface](#)
 - 🤗 [Hugging Face Hub](#)
-- 🧠 [ModelScope Models](#)
 - 📄 [Technical Paper](#)
 - 📰 [Blog Post](#)
 - 📚 [Documentation](#)
 - 🖥️ [Live Demo](#)
-- 💬 [Telegram / Discord Community](#)
-- 🌐 [Multilingual Docs: EN | AR](#)
+- 🌐 [Discord Community](#)
 
 ---
 
@@ -61,9 +59,8 @@ You can explore the following resources to begin working with Falcon-H1:
 
 - **Parallel Hybrid Blocks**: Attention + SSM in every layer.
 - **100+ Languages Supported**: Multilingual instruction, chat, and translation.
-- **Full Ecosystem Integration**: Runs on major inference stacks and supports common file formats (**HF**, **GGUF**).
+- **Full Ecosystem Integration**: Runs on widely used inference stacks and supports common file formats (**HF**, **GGUF**).
 - **Scalable Sizes**: From **500M** to **34B**.
-- **Agent & Tool-Use Ready**: Compatible with planning and tool-based frameworks.
 - **Quantized + Fine-tune Friendly**: Models available in **8-bit**, **4-bit**, and standard **FP16**.
 
 ---
@@ -71,6 +68,6 @@ You can explore the following resources to begin working with Falcon-H1:
 ## 🧠 Join the Community
 
 Got feedback or want to build with Falcon-H1?  
-Join the conversation on [Discord](#), follow us on [Twitter/X](#), or check out our roadmap and open issues on GitHub.
+Join the conversation on [Discord](#), follow us on [Hugging Face](#), visit our [official website](https://falconllm.tii.ae/), or check out our roadmap and open issues on GitHub.
 
 ---
