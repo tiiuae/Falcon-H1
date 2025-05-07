@@ -35,14 +35,6 @@ Access Falcon-H1 across platforms and resources:
 
 ---
 
-## 💡 What is Falcon-H1?
-
-Falcon-H1 is a **hybrid language model series** ranging from **500M** to **34B parameters**, purpose-built for **multilingual tasks**, **instruction following**, and **tool-enhanced agents**. Each block in the architecture processes data through **both attention and SSM pathways**, with outputs merged for richer context retention and more robust generalization.
-
-Falcon-H1 natively supports **18 languages**, and has been extended to **100+**, enabling it to operate effectively in both zero-shot and few-shot multilingual environments.
-
----
-
 ## 🧭 Where to Start?
 
 You can explore the following resources to begin working with Falcon-H1:
