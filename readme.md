@@ -43,7 +43,7 @@ You can explore the following resources to begin working with Falcon-H1:
 - **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **Transformers**, and **llama.cpp**. Other runtimes are in progress.
 - **Local Setup**: Full **GGUF** and **HF** formats available. Run it efficiently on both GPU and CPU.
 - **Docs and Examples**: Dive into tutorials, quantization steps, training tips, and integration guides via the [Documentation Portal](#).
-- **Research**: Learn more about our novel hybrid design in the [Falcon-H1 paper](#), or read insights from our [engineering blog](#).
+- **Research**: Learn more about our novel hybrid design in the [Falcon-H1 paper](#).
 
 ---
 
