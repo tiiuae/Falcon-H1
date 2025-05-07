@@ -18,3 +18,59 @@ tokenizer** trained on diverse language datasets, with strong **zero-shot transl
 - **Efficient Reasoning**: The hybrid structure enhances **reasoning** and **task generalization**.
 
 - **Instruction-Following and Agent Capabilities**: Tuned for **instruction following**, **multi-turn conversations**, and already **integrated with major inference engines** such as **vLLM**, **Hugging Face Transformers**, and **llama.cpp** — with more coming soon.
+
+## 🦅 Falcon-H1
+
+Built by the **Technology Innovation Institute (TII)** in Abu Dhabi, **Falcon-H1** is the latest step in pushing the frontier of hybrid transformer design. This open-source LLM line combines the power of **Attention** with **State Space Models (SSMs)** inside each block—no routing tricks, just pure, parallel architectural synergy.
+
+Access Falcon-H1 across platforms and resources:
+
+- 🔗 [Falcon-H Chat Interface](#)
+- 🤗 [Hugging Face Hub](#)
+- 🧠 [ModelScope Models](#)
+- 📄 [Technical Paper](#)
+- 📰 [Blog Post](#)
+- 📚 [Documentation](#)
+- 🖥️ [Live Demo](#)
+- 💬 [Telegram / Discord Community](#)
+- 🌐 [Multilingual Docs: EN | AR](#)
+
+---
+
+## 💡 What is Falcon-H1?
+
+Falcon-H1 is a **hybrid language model series** ranging from **500M** to **34B parameters**, purpose-built for **multilingual tasks**, **instruction following**, and **tool-enhanced agents**. Each block in the architecture processes data through **both attention and SSM pathways**, with outputs merged for richer context retention and more robust generalization.
+
+Falcon-H1 natively supports **18 languages**, and has been extended to **100+**, enabling it to operate effectively in both zero-shot and few-shot multilingual environments.
+
+---
+
+## 🧭 Where to Start?
+
+You can explore the following resources to begin working with Falcon-H1:
+
+- **Quick Deploy**: Try Falcon-H1 instantly using our hosted [Chat Interface](#) or the [Live Demo](#).
+- **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **Transformers**, and **llama.cpp**. Other runtimes are in progress.
+- **Local Setup**: Full **GGUF** and **HF** formats available. Run it efficiently on both GPU and CPU.
+- **Docs and Examples**: Dive into tutorials, quantization steps, training tips, and integration guides via the [Documentation Portal](#).
+- **Research**: Learn more about our novel hybrid design in the [Falcon-H1 paper](#), or read insights from our [engineering blog](#).
+
+---
+
+## 📦 Falcon-H1 Features at a Glance
+
+- **Parallel Hybrid Blocks**: Attention + SSM in every layer.
+- **100+ Languages Supported**: Multilingual instruction, chat, and translation.
+- **Full Ecosystem Integration**: Runs on major inference stacks and supports common file formats (**HF**, **GGUF**).
+- **Scalable Sizes**: From **500M** to **34B**.
+- **Agent & Tool-Use Ready**: Compatible with planning and tool-based frameworks.
+- **Quantized + Fine-tune Friendly**: Models available in **8-bit**, **4-bit**, and standard **FP16**.
+
+---
+
+## 🧠 Join the Community
+
+Got feedback or want to build with Falcon-H1?  
+Join the conversation on [Discord](#), follow us on [Twitter/X](#), or check out our roadmap and open issues on GitHub.
+
+---
