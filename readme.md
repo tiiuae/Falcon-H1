@@ -109,8 +109,7 @@ A detailed dynamic evaluation report is provided in our [blogpost](#):
 1. 🏆 We compare the performance of each **Falcon-H1** model against the strongest models not only with the same size but also twice their size.
 2. 📈 We show that Falcon-H1 models achieve state-of-the-art performance in most benchmarks (reasoning, maths, coding, in-context learning, and more), outperforming some closed source models like gpt-4o-mini in coding and maths related tasks.
 
-The blogpost also contains a separate part highlighting the inference-speed of Falcon-H1 against other attention-free and attention-with models across a wide range of sequence-lengths and batch sizes.
-
+The blog post also features a dedicated section comparing Falcon-H1's inference speed to both attention-free and attention-based models, across a wide range of sequence lengths and batch sizes.
 ---
 
 ## 📦 Falcon-H1 Features at a Glance
