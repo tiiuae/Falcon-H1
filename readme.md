@@ -75,15 +75,76 @@ Refer to the snippet below to run H1 models using 🤗 transformers:
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+# Load the model
 model_id = "tiiuae/Falcon-H1-1B-Base"
-
 model = AutoModelForCausalLM.from_pretrained(
-  model_id,
-  torch_dtype=torch.bfloat16,
-  device_map="auto"
+    model_id,
+    torch_dtype=torch.bfloat16,
+    device_map="auto"
 )
 
-# Perform text generation
+# Load the tokenizer
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+
+# Prepare input prompt
+prompt = "Give me a short introduction to large language models."
+
+# Tokenize the input
+inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+
+# Generate text
+with torch.no_grad():
+    generated_ids = model.generate(
+        **inputs,
+        max_new_tokens=256,
+        do_sample=True,
+        temperature=0.7,
+        top_p=0.9,
+        repetition_penalty=1.2
+    )
+    
+# Decode the generated output
+output = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
+print(output)
+
+# If you want to handle chat-like interactions, you can use this alternative approach:
+def generate_response(prompt, max_length=256):
+    """
+    Generate a response from the Falcon model for a given prompt.
+    
+    Args:
+        prompt (str): The input prompt
+        max_length (int): The maximum length of the generated response
+        
+    Returns:
+        str: The generated response
+    """
+    # Tokenize the input
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    
+    # Generate text
+    with torch.no_grad():
+        generated_ids = model.generate(
+            **inputs,
+            max_new_tokens=max_length,
+            do_sample=True,
+            temperature=0.7,
+            top_p=0.9,
+            repetition_penalty=1.2
+        )
+    
+    # Extract only the generated part (exclude the input prompt)
+    output_ids = generated_ids[0][len(inputs.input_ids[0]):].tolist()
+    
+    # Decode the generated output
+    response = tokenizer.decode(output_ids, skip_special_tokens=True)
+    return response
+
+# Example usage
+user_message = "Explain quantum computing in simple terms."
+response = generate_response(user_message)
+print(f"User: {user_message}")
+print(f"Falcon: {response}")
 ```
 
 ### 🚄 vLLM
