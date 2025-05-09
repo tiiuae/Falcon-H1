@@ -1,6 +1,10 @@
 # Falcon-H1
 
-<p align="center" style="font-size: 250px;">🦅</p>
+<p align="center">
+  <span style="font-size: 400px;">🦅</span>
+</p>
+
+<p align="center" style="font-size: 24px; font-weight: bold;">Falcon-H1</p>
 
 <p align="center">
   <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
