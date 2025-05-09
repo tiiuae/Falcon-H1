@@ -1,18 +1,21 @@
 # Falcon-H1
 
-<p align="center" style="font-size: 4rem;">🦅</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/your-org/your-repo/main/assets/falcon-h1.png" alt="Falcon-H1 Logo" width="200"/>
+</p>
 
 <p align="center">
-  <a href="#">🦅 Falcon-H Chat</a> |
-  <a href="#">🤗 Hugging Face</a> |
-  <a href="#">🤖 ModelScope</a> |
-  <a href="#">📄 Paper</a> |
-  <a href="#">📰 Blog</a> |
-  <a href="#">📚 Documentation</a> |
-  <a href="#">🖥️ Demo</a> |
-  <a href="#">💬 Telegram</a> |
-  <a href="#">🫨 Discord</a>
+  <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
+  <a href="#">🤗 <strong>Hugging Face</strong></a> |
+  <a href="#">🤖 <strong>ModelScope</strong></a> |
+  <a href="#">📄 <strong>Paper</strong></a> |
+  <a href="#">📰 <strong>Blog</strong></a> |
+  <a href="#">📚 <strong>Documentation</strong></a> |
+  <a href="#">🖥️ <strong>Demo</strong></a> |
+  <a href="#">💬 <strong>Telegram</strong></a> |
+  <a href="#">🫨 <strong>Discord</strong></a>
 </p>
+
 
 
 
