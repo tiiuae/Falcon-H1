@@ -1,16 +1,14 @@
 # Falcon-H1
 
-<p align="center" style="font-size: 48px;">🦅</p>
+<p align="center" style="font-size: 250px;">🦅</p>
 
 <p align="center">
   <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
   <a href="#">🤗 <strong>Hugging Face</strong></a> |
-  <a href="#">🤖 <strong>ModelScope</strong></a> |
   <a href="#">📄 <strong>Paper</strong></a> |
   <a href="#">📰 <strong>Blog</strong></a> |
   <a href="#">📚 <strong>Documentation</strong></a> |
   <a href="#">🖥️ <strong>Demo</strong></a> |
-  <a href="#">💬 <strong>Telegram</strong></a> |
   <a href="#">🫨 <strong>Discord</strong></a>
 </p>
 
