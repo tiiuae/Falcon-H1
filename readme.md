@@ -1,8 +1,6 @@
 # Falcon-H1
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/your-org/your-repo/main/assets/falcon-h1.png" alt="Falcon-H1 Logo" width="200"/>
-</p>
+<p align="center" style="font-size: 48px;">🦅</p>
 
 <p align="center">
   <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
@@ -15,7 +13,6 @@
   <a href="#">💬 <strong>Telegram</strong></a> |
   <a href="#">🫨 <strong>Discord</strong></a>
 </p>
-
 
 
 
