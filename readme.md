@@ -87,7 +87,7 @@ model = AutoModelForCausalLM.from_pretrained(
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
 # Prepare input prompt
-prompt = "Give me a short introduction to large language models."
+prompt = "Give me a short introduction to state space models."
 
 # Tokenize the input
 inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
