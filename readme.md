@@ -1,53 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .falcon-icon {
-            font-size: 400px; /* Much larger falcon emoji */
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-        .links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-        .links a {
-            text-decoration: none;
-            color: #0066cc;
-            font-weight: 500;
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Falcon-H1</h1>
-    <div class="falcon-icon">🦅</div>
-    <div class="links">
-        <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
-        <a href="#">🤗 <strong>Hugging Face</strong></a> |
-        <a href="#">📄 <strong>Paper</strong></a> |
-        <a href="#">📰 <strong>Blog</strong></a> |
-        <a href="#">📚 <strong>Documentation</strong></a> |
-        <a href="#">🖥️ <strong>Demo</strong></a> |
-        <a href="#">🫨 <strong>Discord</strong></a>
-    </div>
-</body>
-</html>
+# Falcon-H1
+
+![Uploading image.png…]()
+![Uploading image.png…]()
+
+<p align="center">
+  <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
+  <a href="#">🤗 <strong>Hugging Face</strong></a> |
+  <a href="#">🤖 <strong>ModelScope</strong></a> |
+  <a href="#">📄 <strong>Paper</strong></a> |
+  <a href="#">📰 <strong>Blog</strong></a> |
+  <a href="#">📚 <strong>Documentation</strong></a> |
+  <a href="#">🖥️ <strong>Demo</strong></a> |
+  <a href="#">💬 <strong>Telegram</strong></a> |
+  <a href="#">🫨 <strong>Discord</strong></a>
+</p>
+
 
 
 
