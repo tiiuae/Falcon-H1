@@ -1,17 +1,13 @@
 # Falcon-H1
 
-![Uploading image.png…]()
-![Uploading image.png…]()
 
 <p align="center">
   <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
   <a href="#">🤗 <strong>Hugging Face</strong></a> |
-  <a href="#">🤖 <strong>ModelScope</strong></a> |
   <a href="#">📄 <strong>Paper</strong></a> |
   <a href="#">📰 <strong>Blog</strong></a> |
   <a href="#">📚 <strong>Documentation</strong></a> |
   <a href="#">🖥️ <strong>Demo</strong></a> |
-  <a href="#">💬 <strong>Telegram</strong></a> |
   <a href="#">🫨 <strong>Discord</strong></a>
 </p>
 
