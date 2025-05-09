@@ -1,3 +1,21 @@
+# Falcon-H1
+
+<p align="center" style="font-size: 4rem;">🦅</p>
+
+<p align="center">
+  <a href="#">🦅 Falcon-H Chat</a> |
+  <a href="#">🤗 Hugging Face</a> |
+  <a href="#">🤖 ModelScope</a> |
+  <a href="#">📄 Paper</a> |
+  <a href="#">📰 Blog</a> |
+  <a href="#">📚 Documentation</a> |
+  <a href="#">🖥️ Demo</a> |
+  <a href="#">💬 Telegram</a> |
+  <a href="#">🫨 Discord</a>
+</p>
+
+
+
 ## 🚀 Introduction
 
 We are excited to introduce **Falcon-H1**, the latest evolution in the Falcon family of large language models. Built upon an advanced **hybrid architecture**—where each block integrates both **State Space Models (SSMs)** and **Attention Mechanisms**, with all channels passing through both and their outputs are finally **summed**.
@@ -7,6 +25,8 @@ These models span a wide range of scales, from **500 million to 34 billion param
 **Falcon-H1** was initially trained with support for **18 core languages**, extended to cover **100+ languages**, achieving state-of-the-art multilingual and reasoning performances in **instruction following**, **maths**, **coding**, and **conversational tasks**.
 
 ## ✨ Key Highlights
+
+Built by the **Technology Innovation Institute (TII)** in Abu Dhabi, **Falcon-H1** is the latest step in pushing the frontier of hybrid transformer design. Main key highlights are :
 
 - **Hybrid Architecture**: Each transformer block processes all channels through both **SSM** and **Attention** in parallel, then **sums the outputs**. This allows the model to benefit from both **long-range memory** (via SSMs) and **local/global attention** simultaneously.
 
@@ -18,20 +38,6 @@ tokenizer** trained on diverse language datasets, with strong **zero-shot transl
 - **Efficient Reasoning**: The hybrid structure enhances **reasoning** and **task generalization**.
 
 - **Instruction-Following and Agent Capabilities**: Tuned for **instruction following**, **multi-turn conversations**, and already **integrated with major inference engines** such as **vLLM**, **Hugging Face Transformers**, and **llama.cpp** — with more coming soon.
-
-## 🦅 Falcon-H1
-
-Built by the **Technology Innovation Institute (TII)** in Abu Dhabi, **Falcon-H1** is the latest step in pushing the frontier of hybrid transformer design. This open-source LLM line combines the power of **Attention** with **State Space Models (SSMs)** inside each block—no routing tricks, just pure, parallel architectural synergy.
-
-Access Falcon-H1 across platforms and resources:
-
-- 🧠 [Falcon-H1 Chat Interface](#)
-- 🤗 [Hugging Face Hub](#)
-- 📄 [Technical Paper](#)
-- 📰 [Blog Post](#)
-- 📚 [Documentation](#)
-- 🖥️ [Live Demo](#)
-- 🌐 [Discord Community](#)
 
 ---
 
