@@ -1,18 +1,17 @@
-# 🦅 Falcon-H1
+# Falcon-H1
 
 <p align="center">
-  <span style="font-size: 500px;">🦅</span>
+  <a href="https://chat.falconllm.tii.ae/">🦅 <strong>Falcon-H Chat</strong></a> |
+  <a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df">🤗 <strong>Hugging Face</strong></a> |
+  <a href="#">📄 <strong>Paper (Coming soon)</strong></a> |
+  <a href="https://falcon-lm.github.io/blog/falcon-h1/">📰 <strong>Blog</strong></a> |
+  <a href="https://huggingface.co/spaces/tiiuae/Falcon-H1-playground">🖥️ <strong>Hugging Face Demo</strong></a> |
+  <a href="https://discord.gg/trwMYP9PYm">💬 <strong>Discord</strong></a>
 </p>
 
-<p align="center">
-  <a href="#">🦅 <strong>Falcon-H Chat</strong></a> |
-  <a href="#">🤗 <strong>Hugging Face</strong></a> |
-  <a href="#">📄 <strong>Paper</strong></a> |
-  <a href="#">📰 <strong>Blog</strong></a> |
-  <a href="#">📚 <strong>Documentation</strong></a> |
-  <a href="#">🖥️ <strong>Demo</strong></a> |
-  <a href="#">🫨 <strong>Discord</strong></a>
-</p>
+## News
+
+- 05/21/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) are finally out ![NEW](https://img.shields.io/badge/NEW-red)
 
 ---
 
@@ -49,11 +48,10 @@ Tuned for **instruction following**, **multi-turn conversations**, and already *
 
 We provide the following documentation and resources to begin working with Falcon-H1:
 
-- 💬 **Quick Deploy**: Try Falcon-H1 instantly using our hosted [Chat Interface](#) or the [Live Demo](#).
+- 💬 **Quick Deploy**: Try Falcon-H1 instantly using our hosted [Chat Interface](https://chat.falconllm.tii.ae/auth) or the [Live Demo from Hugging Face](https://huggingface.co/spaces/tiiuae/Falcon-H1-playground)
 - 🛠️ **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **Transformers**, and **llama.cpp**. Other runtimes are in progress.
 - 💻 **Local Setup**: Full **GGUF** and **HF** formats available. Run it efficiently on both GPU and CPU.
-- 📚 **Docs and Examples**: Dive into tutorials, quantization steps, training tips, and integration guides via the [Documentation Portal](#).
-- 🔬 **Research**: Learn more about our novel hybrid design in the [Falcon-H1 paper](#).
+- 🔬 **Research**: Learn more about our novel hybrid design in the [Falcon-H1 technical report]() (Coming soon).
 
 ---
 
@@ -86,65 +84,7 @@ model = AutoModelForCausalLM.from_pretrained(
 # Load the tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
-# Prepare input prompt
-prompt = "Give me a short introduction to state space models."
-
-# Tokenize the input
-inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-
-# Generate text
-with torch.no_grad():
-    generated_ids = model.generate(
-        **inputs,
-        max_new_tokens=256,
-        do_sample=True,
-        temperature=0.7,
-        top_p=0.9,
-        repetition_penalty=1.2
-    )
-    
-# Decode the generated output
-output = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-print(output)
-
-# If you want to handle chat-like interactions, you can use this alternative approach:
-def generate_response(prompt, max_length=256):
-    """
-    Generate a response from the Falcon model for a given prompt.
-    
-    Args:
-        prompt (str): The input prompt
-        max_length (int): The maximum length of the generated response
-        
-    Returns:
-        str: The generated response
-    """
-    # Tokenize the input
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    
-    # Generate text
-    with torch.no_grad():
-        generated_ids = model.generate(
-            **inputs,
-            max_new_tokens=max_length,
-            do_sample=True,
-            temperature=0.7,
-            top_p=0.9,
-            repetition_penalty=1.2
-        )
-    
-    # Extract only the generated part (exclude the input prompt)
-    output_ids = generated_ids[0][len(inputs.input_ids[0]):].tolist()
-    
-    # Decode the generated output
-    response = tokenizer.decode(output_ids, skip_special_tokens=True)
-    return response
-
-# Example usage
-user_message = "Explain quantum computing in simple terms."
-response = generate_response(user_message)
-print(f"User: {user_message}")
-print(f"Falcon: {response}")
+# Perform text generation below
 ```
 
 ### 🚄 vLLM
@@ -159,13 +99,15 @@ vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel
 
 ### 🔧 llama.cpp
 
-Refer to the model cards of our GGUF models and follow the installation instructions to run the model with `llama.cpp`. 
+Refer to the model cards of our GGUF models and follow the installation instructions to run the model with `llama.cpp`. Until our changes gets merged, you can use [our public fork of llama.cpp](https://github.com/tiiuae/llama.cpp-Falcon-H1).
+
+All official GGUF files can be found on [our official Hugging Face collection](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df).
 
 ---
 
 ## 📊 Performance and Throughput
 
-A detailed dynamic evaluation report is provided in our [blogpost](#):
+A detailed dynamic evaluation report is provided in our [blogpost](https://falcon-lm.github.io/blog/falcon-h1/):
 
 1. 🏆 We compare the performance of each **Falcon-H1** model against the strongest models not only with the same size but also twice their size.
 2. 📈 We show that Falcon-H1 models achieve state-of-the-art performance in most benchmarks (reasoning, maths, coding, in-context learning, and more), outperforming some closed source models like gpt-4o-mini in coding, reasoning and instruction following related tasks.
@@ -188,7 +130,21 @@ The blog post also features a dedicated section comparing Falcon-H1's inference 
 
 Got feedback or want to build with Falcon-H1?  
 
-Join the conversation on [Discord](#), follow us on [Hugging Face](#), visit our [official website](https://falconllm.tii.ae/), or check out our roadmap and open issues on [GitHub](https://github.com/tiiuae/Falcon-H1/tree/main).
+Join the conversation on [Discord](https://discord.gg/trwMYP9PYm), follow us on [Hugging Face](https://huggingface.co/tiiuae), visit our [official website](https://falconllm.tii.ae/), or check out our roadmap and open issues on [GitHub](https://github.com/tiiuae/Falcon-H1/tree/main).
+
+## Citation
+
+Feel free to cite our work if you find it useful for your projects:
+
+```bibtex
+@misc{tiifalconh1,
+    title = {Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance},
+    url = {https://falcon-lm.github.io/blog/falcon-h1},
+    author = {Falcon-LLM Team},
+    month = {May},
+    year = {2025}
+}
+```
 
 ---
 
