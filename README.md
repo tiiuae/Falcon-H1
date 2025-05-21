@@ -43,6 +43,7 @@ Native training in **18 languages**, with scalability to 100+ languages thanks t
 ### 🤖 Instruction-Following and Agent Capabilities 
 Tuned for **instruction following**, **multi-turn conversations**, and already **integrated with major inference engines** such as **vLLM**, **Hugging Face Transformers**, and **llama.cpp** — with more coming soon.
 
+
 ---
 
 ## 🧭 Where to Start?
