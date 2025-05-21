@@ -1,6 +1,42 @@
 # Evaluations
 
-Detailed evaluations and how to reproduce the results will be posted shortly in this page. Meanwhile you can explore detailed results below:
+We summarize our evaluation settings in the following table.
+
+| Task | Base models setting | Instruct models setting | 
+| --- | --- | --- |
+| **General** | 
+| BBH | logprobs, 3-shot | logprobs, 3-shot |
+| ARC-C | logprobs, 25-shot | logprobs, 0-shot | 
+| TruthfulQA | - | logprobs, 0-shot | 
+| HellaSwag | logprobs, 10-shot | logprobs, 0-shot | 
+| Winogrande | logprobs, 5-shot | - |
+| MMLU | logprobs, 5-shot | logprobs, 5-shot | 
+| **Math**  | 
+| GSM8k | strict match, 5-shot | strict match, 5-shot | 
+| MATH-500 | - | accuracy |
+| MATH lvl5 | math verify, 4-shot | - |
+| AMC-23 | - | average accuracy, 16 repetitions |
+| AIME-24 | - | average accuracy, 16 repetitions |
+| AIME-25 | - | average accuracy, 16 repetitions |
+| **Science**  | 
+| GPQA | logprobs, 5-shot | logprobs, 5-shot |
+| GPQA_Diamond | - | average accuracy, 3 repetitions |
+| MMLU-Pro | logprobs, 5-shot | logprobs, 5-shot |
+| MMLU-stem | subset of MMLU | subset of MMLU | 
+| **Code**  | 
+| HumanEval | pass@1 | pass@1 |
+| HumanEval+ | pass@1 | pass@1 |
+| MBPP | pass@1 | pass@1 |
+| MBPP+ | pass@1 | pass@1 |
+| LiveCodeBench | - | accuracy |
+| CRUXEval | - | pass@1, input & output average |
+| **Instruction Following** | 
+| IFEval | - | inst & prompt average accuaracy |
+| Alpaca-Eval | - | LC winrate |
+| MTBench | - | turn 1 & 2 average |
+| LiveBench | - | global_average |
+
+The respective evaluation results for both base and instruct models can be found below
 
 ## Falcon-H1-0.5B
 
