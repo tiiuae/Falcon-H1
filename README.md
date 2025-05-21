@@ -3,8 +3,9 @@
 <p align="center">
   <a href="https://chat.falconllm.tii.ae/">🦅 <strong>Falcon-H Chat</strong></a> |
   <a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df">🤗 <strong>Hugging Face</strong></a> |
-  <a href="#">📄 <strong>Paper (Coming soon)</strong></a> |
+  <a href="https://tiiuae.falcon-h1.github.io/">📄 <strong>Paper (Coming soon)</strong></a> |
   <a href="https://falcon-lm.github.io/blog/falcon-h1/">📰 <strong>Blog</strong></a> |
+  <a href="#">📄 <strong>Documentation</strong></a> |
   <a href="https://huggingface.co/spaces/tiiuae/Falcon-H1-playground">🖥️ <strong>Hugging Face Demo</strong></a> |
   <a href="https://discord.gg/trwMYP9PYm">💬 <strong>Discord</strong></a>
 </p>
