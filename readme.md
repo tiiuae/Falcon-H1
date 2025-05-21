@@ -1,8 +1,4 @@
-# 🦅 Falcon-H1
-
-<p align="center">
-  <span style="font-size: 500px;">🦅</span>
-</p>
+# Falcon-H1
 
 <p align="center">
   <a href="https://chat.falconllm.tii.ae/">🦅 <strong>Falcon-H Chat</strong></a> |
@@ -10,7 +6,7 @@
   <a href="#">📄 <strong>Paper (Coming soon)</strong></a> |
   <a href="https://falcon-lm.github.io/blog/falcon-h1/">📰 <strong>Blog</strong></a> |
   <a href="https://huggingface.co/spaces/tiiuae/Falcon-H1-playground">🖥️ <strong>Hugging Face Demo</strong></a> |
-  <a href="https://discord.gg/trwMYP9PYm">🫨 <strong>Discord</strong></a>
+  <a href="https://discord.gg/trwMYP9PYm">💬 <strong>Discord</strong></a>
 </p>
 
 ## News
@@ -103,7 +99,9 @@ vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel
 
 ### 🔧 llama.cpp
 
-Refer to the model cards of our GGUF models and follow the installation instructions to run the model with `llama.cpp`. Until our changes gets merged, you can use [our public fork of llama.cpp](https://github.com/tiiuae/llama.cpp-Falcon-H1)
+Refer to the model cards of our GGUF models and follow the installation instructions to run the model with `llama.cpp`. Until our changes gets merged, you can use [our public fork of llama.cpp](https://github.com/tiiuae/llama.cpp-Falcon-H1).
+
+All official GGUF files can be found on [our official Hugging Face collection](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df).
 
 ---
 
@@ -133,6 +131,20 @@ The blog post also features a dedicated section comparing Falcon-H1's inference 
 Got feedback or want to build with Falcon-H1?  
 
 Join the conversation on [Discord](https://discord.gg/trwMYP9PYm), follow us on [Hugging Face](https://huggingface.co/tiiuae), visit our [official website](https://falconllm.tii.ae/), or check out our roadmap and open issues on [GitHub](https://github.com/tiiuae/Falcon-H1/tree/main).
+
+## Citation
+
+Feel free to cite our work if you find it useful for your projects:
+
+```bibtex
+@misc{tiifalconh1,
+    title = {Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance},
+    url = {https://falcon-lm.github.io/blog/falcon-h1},
+    author = {Falcon-LLM Team},
+    month = {May},
+    year = {2025}
+}
+```
 
 ---
 
