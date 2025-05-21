@@ -1,4 +1,4 @@
-# Falcon-H1
+![](docs/assets/logo.png)
 
 <p align="center">
   <a href="https://chat.falconllm.tii.ae/">🦅 <strong>Falcon-H Chat</strong></a> |
