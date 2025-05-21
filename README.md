@@ -113,7 +113,7 @@ A detailed dynamic evaluation report is provided in our [blogpost](https://falco
 1. 🏆 We compare the performance of each **Falcon-H1** model against the strongest models not only with the same size but also twice their size.
 2. 📈 We show that Falcon-H1 models achieve state-of-the-art performance in most benchmarks (reasoning, maths, coding, in-context learning, and more), outperforming some closed source models like gpt-4o-mini in coding, reasoning and instruction following related tasks.
 
-The blog post also features a dedicated section comparing Falcon-H1's inference speed to both attention-free and attention-based models, across a wide range of sequence lengths and batch sizes.
+The blog post also features a dedicated section comparing Falcon-H1's inference speed to leading attention-based models, across a wide range of sequence lengths, prefillinng and generation scenarios.
 
 ---
 
@@ -121,7 +121,7 @@ The blog post also features a dedicated section comparing Falcon-H1's inference 
 
 - 🔄 **Parallel Hybrid Blocks**: Attention + SSM in every layer.
 - 🌍 **100+ Languages Supported**: Multilingual instruction, chat, and translation.
-- 📏 **Scalable Sizes**: From **500M** to **34B**.
+- 📏 **Scalable Sizes**: From **0.5B** to **34B**.
 - 🧩 **Full Ecosystem Integration**: Runs on widely used inference stacks and supports common file formats (**HF**, **GGUF**).
 - 🔋 **Quantized + Fine-tune Friendly**: Models available in **8-bit**, **4-bit**, and standard **FP16**.
 
