@@ -32,7 +32,7 @@ Built by the **Technology Innovation Institute (TII)** in Abu Dhabi, **Falcon-H1
 Each transformer block processes all channels through both **SSM** and **Attention** in parallel, then **sums the outputs**. This allows the model to benefit from both **long-range memory** (via SSMs) and **local/global attention** simultaneously.
 
 ### 📏 Scalable Sizes 
-Models available at multiple scales: **500M**, **1.5B**, **3B**, **7B**, and **34B** parameters.
+Models available at multiple scales or variants: **500M**, **1.5B**, **1.5B-Deep**, **3B**, **7B**, and **34B** parameters.
 
 ### 🧠 Efficient Reasoning 
 The hybrid structure enhances **reasoning** and **task generalization**.
