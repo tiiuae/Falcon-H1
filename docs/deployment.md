@@ -124,8 +124,8 @@ docker run -d \
 > For advanced tuning and custom flags, see the full llama.cpp documentation: [https://github.com/ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp)
 
 
-Demo
-Hardware: MacBook M4 Max Chip
-Model:Falcon-H1-1B-Q6_K
+#### Demo
 
-https://github.com/user-attachments/assets/f4181da9-bebe-4ead-8970-4ff7bef3069d
+![](https://github.com/user-attachments/assets/f4181da9-bebe-4ead-8970-4ff7bef3069d)
+
+We use a MacBook M4 Max Chip and Falcon-H1-1B-Q6_K for this demo.
