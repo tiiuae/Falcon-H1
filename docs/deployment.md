@@ -4,6 +4,15 @@ This page summarizes all the current available tools that you can use for deploy
 
 ## 🤗 transformers
 
+We advise users to install Mamba-SSM from our public fork in order to include [this fix](https://github.com/state-spaces/mamba/pull/708). Note this is optional as we observed that the issue occurs stochastically. 
+
+```bash
+git clone https://github.com/younesbelkada/mamba.git && cd mamba/ && pip install -e . --no-build-isolation
+```
+
+Check [this issue](https://github.com/state-spaces/mamba/pull/708) for more details.
+
+
 Make sure to install `transformers` library from source:
 
 ```bash
