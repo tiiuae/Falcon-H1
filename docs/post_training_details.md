@@ -24,13 +24,13 @@ We summarize the main parameter of our SFT setting in the table below.
 
 Up to this point, we have described the single setting for all the model sizes, from 0.5B to 34B (with the exception of no 128k stage for 0.5B). To a large extent, a single setting is possible due to the use of maximal-update-parametrization (μP) that tries to ensure that training dynamics stay roughly the same between different model sizes by scaling Hyperparameters with μP scaling rules. Our implementation of μP uses scaling multipliers directly in the forward pass of the model and therefore does not require scaling the learning rate across the model sizes. We plan to provide the script of how we scale different μP multipliers with the model's tensor shapes in the near future.  
 
-One parameter that we have changed significantly across model sizes was batch size. In the ablations studies, we have noticed that different batch sizes in the range from 0.25MT to 4MT have little impact on the SFT results, with smaller batch sizes being only slightly better in some scenarios. Therefore, we were mostly choosing batch size for each model to optimally distribute compute nodes across different model sizes to ensure the timely completion of the SFT stage. For example, longcontext 128k stage was slow due to context parallelism and therefore required larger batch sizes to allow for larger data parallelism (DP) degrees. 
+One parameter that we have changed significantly across model sizes was batch size. In the ablation studies, we have noticed that different batch sizes in the range from 0.25MT to 4MT have little impact on the SFT results, with smaller batch sizes being only slightly better in some scenarios. Therefore, we were mostly choosing batch size for each model to optimally distribute compute nodes across different model sizes to ensure the timely completion of the SFT stage. For example, longcontext 128k stage was slow due to context parallelism and therefore required larger batch sizes to allow for larger data parallelism (DP) degrees. 
 
 However, different batch sizes have different optimal learning rates. We minimize the effect of the shifting of the optimal LR with *Adam batch scaling* that keeps $\frac{\eta}{\sqrt{b}}$ constant when changing batch size. Specifically, at each batch size $b$ we were setting the maximal LR of the WSD schedule according to 
-$$
-\eta(b) = \eta_\mathrm{ref}\sqrt{\frac{b}{b_\mathrm{ref}}},
-$$
-where $ \eta_\mathrm{ref}=128\times10^{-6}$ and $b_\mathrm{ref}=$ 1MT are the values we previously mentioned in the table. This scaling captures most of the optimal LR shift and removes the need to re-tune LR for each new batch size. We are expecting that with Adam scaling, researchers and developers finetuning Falcon-H1 models can use our hyperparameters as a good starting point, most importantly learning rate, while keeping the batch size more suitable for their scenario.   
+
+$$\eta(b) = \eta_\mathrm{ref}\sqrt{\frac{b}{b_\mathrm{ref}}},$$
+
+where $\eta_\mathrm{ref}=128\times10^{-6}$ and $b_\mathrm{ref}=$ 1MT are the values we previously mentioned in the table. This scaling captures most of the optimal LR shift and removes the need to re-tune LR for each new batch size. We are expecting that with Adam scaling, researchers and developers finetuning Falcon-H1 models can use our hyperparameters as a good starting point, most importantly learning rate, while keeping the batch size more suitable for their scenario.   
 
 ## DPO
 
