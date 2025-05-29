@@ -2,6 +2,7 @@
 
 This page summarizes all the current available tools that you can use for deploying Falcon-H1 series
 
+Make sure to use Falcon-H1 model in torch.bfloat16 and not torch.float16 for the best performance.
 ## 🤗 transformers
 
 We advise users to install Mamba-SSM from our public fork in order to include [this fix](https://github.com/state-spaces/mamba/pull/708). Note this is optional as we observed that the issue occurs stochastically. 
