@@ -1,4 +1,4 @@
-# Fine-Tuning Guidelines for the Falcon-H1 Series
+# Fine-Tuning Guidelines
 
 This document outlines a series of recommendations and best practices for fine-tuning models within the Falcon-H1 series. Given that Falcon-H1 is seamlessly integrated into the Hugging Face Transformers library, it is inherently compatible with the majority of the ecosystem's components. Nevertheless, it is imperative to adhere to certain fundamental principles prior to initiating fine-tuning for specific applications.
 
