@@ -5,6 +5,7 @@ This document outlines a series of recommendations and best practices for fine-t
 ## Initial Recommendations
 
 - **OUMI Framework**: For detailed guidance, refer to the relevant documentation section available [here](https://github.com/oumi-ai/oumi/tree/main/configs/recipes/falcon_h1).
+- **Llama-Factory framework***: For detailed guidance, please refer to the official documentation of [llama-factory](https://github.com/hiyouga/LLaMA-Factory).
 - **Hyperparameter Configuration**: For insights into the hyperparameters utilized in our experimental setup, consult the [Post-Training Details](./post_training_details.md) document.
 
 Integration into other platforms, is coming soon.
