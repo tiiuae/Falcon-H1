@@ -12,6 +12,7 @@
 
 ## News
 
+
 - 05/21/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is finally out! ![NEW](https://img.shields.io/badge/NEW-red)
 
 ---
@@ -51,7 +52,8 @@ Tuned for **instruction following**, **multi-turn conversations**, and already *
 We provide the following documentation and resources to begin working with Falcon-H1:
 
 - 💬 **Quick Deploy**: Try Falcon-H1 instantly using our hosted [Chat Interface](https://chat.falconllm.tii.ae/auth) or the [Live Demo from Hugging Face](https://huggingface.co/spaces/tiiuae/Falcon-H1-playground)
-- 🛠️ **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **Transformers**, and **llama.cpp**. Other runtimes are in progress.
+- 🛠️ **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **Transformers**, and **llama.cpp**. 👉 [Deployment Instructions](https://github.com/tiiuae/Falcon-H1/blob/main/docs/deployment.md). Other runtimes are in progress.
+- ⚙️ **Fine-tuning**: Compatible with most frameworks based on Hugging Face Transformers library, out-of-the-box with **OUMI**, **Llama-Factory**, etc. 👉 [Fine-Tuning Guidelines](https://github.com/tiiuae/Falcon-H1/blob/main/docs/finetuning.md). More framework support coming soon!
 - 💻 **Local Setup**: Full **GGUF** and **HF** formats available. Run it efficiently on both GPU and CPU.
 - 🔬 **Research**: Learn more about our novel hybrid design in the [Falcon-H1 technical report]() (Coming soon).
 
@@ -159,12 +161,12 @@ Start the HTTP server for inference:
 
 ```bash
 ./build/bin/llama-server \
-  -m models/Falcon-H1-1B-Instruct-Q5_0.gguf \  
-  -c 4096 \                # Context window size
-  --ngl 512 \              # Number of GPU layers (omit if CPU-only)
-  --temp 0.1 \             # Sampling temperature
-  --host 0.0.0.0 \         # Bind address
-  --port 11434             # Listening port
+  -m models/Falcon-H1-1B-Instruct-Q5_0.gguf \
+  -c 4096 \
+  -ngl 512 \
+  --temp 0.1 \
+  --host 0.0.0.0 \
+  --port 11434
 ```
 
 #### 5. Web UI via OpenWebUI
