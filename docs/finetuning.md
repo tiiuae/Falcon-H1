@@ -6,6 +6,8 @@ This document outlines a series of recommendations and best practices for fine-t
 
 - **OUMI Framework**: For detailed guidance, refer to the relevant documentation section available [here](https://github.com/oumi-ai/oumi/tree/main/configs/recipes/falcon_h1).
 - **Llama-Factory framework**: For detailed guidance, please refer to the official documentation of [llama-factory](https://github.com/hiyouga/LLaMA-Factory).
+- **axolotl framework**: You can install `axolotl` and use one of the pre-defined configuration file [from this folder](https://github.com/axolotl-ai-cloud/axolotl/tree/main/examples/falcon-h1) to get started.
+- **unsloth**: Falcon-H1 is integrated into unsloth training framework. Check out the example notebook exposed [here](https://github.com/unslothai/notebooks/pull/64) (the notebook will be merged soon into the main library) 
 - **Hyperparameter Configuration**: For insights into the hyperparameters utilized in our experimental setup, consult the [Post-Training Details](./post_training_details.md) document.
 
 Integration into other platforms, is coming soon.
