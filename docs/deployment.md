@@ -141,3 +141,7 @@ docker run -d \
 ![](https://github.com/user-attachments/assets/f4181da9-bebe-4ead-8970-4ff7bef3069d)
 
 We use a MacBook M4 Max Chip and Falcon-H1-1B-Q6_K for this demo.
+
+## SkyPilot
+
+Refer to [this documentation section](https://github.com/skypilot-org/skypilot/tree/master/llm/falcon_h1) for deploying Falcon-H1 series models using Skypilot library.
