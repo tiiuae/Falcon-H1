@@ -50,15 +50,9 @@ vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel
 
 ## 🔧 llama.cpp
 
-Refer to the model cards of our GGUF models and follow the installation instructions to run the model with `llama.cpp`. Until our changes gets merged, you can use [our public fork of llama.cpp](https://github.com/tiiuae/llama.cpp-Falcon-H1).
+Falcon-H1 is natively supported into `llama.cpp` !
 
 All official GGUF files can be found on [our official Hugging Face collection](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df).
-
-### 🔧 llama.cpp Integration
-
-The `llama.cpp` toolkit provides a lightweight C/C++ implementation for running Falcon-H1 models locally. We maintain a public fork with all necessary patches and support:
-
-* **GitHub**: [https://github.com/tiiuae/llama.cpp-Falcon-H1](https://github.com/tiiuae/llama.cpp-Falcon-H1)
 
 ---
 
@@ -75,8 +69,8 @@ The `llama.cpp` toolkit provides a lightweight C/C++ implementation for running 
 
 ```bash
 # Clone the Falcon-H1 llama.cpp fork
-git clone https://github.com/tiiuae/llama.cpp-Falcon-H1.git
-cd llama.cpp-Falcon-H1
+git clone https://github.com/ggml-org/llama.cpp
+cd llama.cpp
 
 # Create a build directory and compile
 mkdir build && cd build
@@ -94,7 +88,7 @@ Fetch the desired Falcon-H1 checkpoint from Hugging Face’s collection:
 
 ```bash
 # Example: download the 1B Instruct model
-wget https://huggingface.co/tiiuae/falcon-h1-6819f2795bc406da60fab8df/resolve/main/Falcon-H1-1B-Instruct-Q5_0.gguf \
+wget https://huggingface.co/tiiuae/Falcon-H1-1.5B-Instruct-GGUF/resolve/main/Falcon-H1-1.5B-Instruct-Q5_K.gguf \
      -P models/
 ```
 
