@@ -139,3 +139,9 @@ We use a MacBook M4 Max Chip and Falcon-H1-1B-Q6_K for this demo.
 ## SkyPilot
 
 Refer to [this documentation section](https://github.com/skypilot-org/skypilot/tree/master/llm/falcon_h1) for deploying Falcon-H1 series models using Skypilot library.
+
+## Lm-studio
+
+First, install lm-studio from [the official website](https://lmstudio.ai/) - make sure to select the latest `llama.cpp` runtime by selecting Developer mode -> "LM Runtimes" (from top left) -> Make sure that `llama.cpp` version is greater than `v1.39.0`
+
+<img width="1724" height="773" alt="Screenshot 2025-07-15 at 9 02 38 AM" src="https://github.com/user-attachments/assets/9e20c841-1a93-4ae3-9722-3d50fe3b7ef2" />
