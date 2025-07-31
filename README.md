@@ -3,16 +3,17 @@
 <p align="center">
   <a href="https://chat.falconllm.tii.ae/">🦅 <strong>Falcon-H Chat</strong></a> |
   <a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df">🤗 <strong>Hugging Face</strong></a> |
-  <a href="https://tiiuae.falcon-h1.github.io/">📄 <strong>Paper (Coming soon)</strong></a> |
+  <a href="https://arxiv.org/abs/2507.22448">📄 <strong>Paper </strong></a> |
   <a href="https://falcon-lm.github.io/blog/falcon-h1/">📰 <strong>Blog</strong></a> |
-  <a href="#">📄 <strong>Documentation</strong></a> |
+  <a href="https://tiiuae.github.io/Falcon-H1/">📄 <strong>Documentation</strong></a> |
   <a href="https://huggingface.co/spaces/tiiuae/Falcon-H1-playground">🖥️ <strong>Hugging Face Demo</strong></a> |
   <a href="https://discord.gg/trwMYP9PYm">💬 <strong>Discord</strong></a>
 </p>
 
 ## News
 
-- 07/09/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into llama.cpp](https://github.com/ggml-org/llama.cpp)! ![NEW](https://img.shields.io/badge/NEW-red)
+- 07/31/2025 The [Technical Report](https://arxiv.org/abs/2507.22448) for Falcon-H1 series is now relreased! [NEW](https://img.shields.io/badge/NEW-red)
+- 07/09/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into llama.cpp](https://github.com/ggml-org/llama.cpp)!
 - 06/30/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into several fine-tuning frameworks (axolotl, llama-factory, unsloth)](https://tiiuae.github.io/Falcon-H1/finetuning/)! 
 - 05/21/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is finally out!
 ---
