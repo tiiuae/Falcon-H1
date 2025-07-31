@@ -145,3 +145,24 @@ Refer to [this documentation section](https://github.com/skypilot-org/skypilot/t
 First, install lm-studio from [the official website](https://lmstudio.ai/) - make sure to select the latest `llama.cpp` runtime by selecting Developer mode -> "LM Runtimes" (from top left) -> Make sure that `llama.cpp` version is greater than `v1.39.0`
 
 ![](https://github.com/user-attachments/assets/9e20c841-1a93-4ae3-9722-3d50fe3b7ef2)
+
+## Jan
+
+Jan is an open source alternative to ChatGPT that runs 100% offline on your computer - it also support H1 models with minimal configuration steps. First make sure to install the version >=0.6.5, then Navigate to Settings -> Model Providers -> Llama.cpp
+
+![](assets/jan-screen-settings.png)
+
+From there, click on the folder icon to import your own GGUF file and select any H1 GGUF model that you have downloaded locally. After that, switch to the main screen and start chatting with the model !
+
+![](assets/jan-screen-chat.png)
+
+## Docker Model API
+
+Docker supports deploying local models with a simple API, you can use Falcon-H1 with Docker Model API starting from Docker Desktop version 4.43.2. 
+
+First make sure to run docker desktop (for Mac devices), then run:
+
+```bash
+docker model run hf.co/tiiuae/Falcon-H1-1.5B-Instruct-GGUF
+```
+
