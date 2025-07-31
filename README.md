@@ -12,7 +12,7 @@
 
 ## News
 
-- 07/31/2025 The [Technical Report](https://arxiv.org/abs/2507.22448) for Falcon-H1 series is now relreased! ![NEW](https://img.shields.io/badge/NEW-red)
+- 07/31/2025 The [Technical Report](https://arxiv.org/abs/2507.22448) of Falcon-H1 is now released! ![NEW](https://img.shields.io/badge/NEW-red)
 - 07/09/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into llama.cpp](https://github.com/ggml-org/llama.cpp)!
 - 06/30/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into several fine-tuning frameworks (axolotl, llama-factory, unsloth)](https://tiiuae.github.io/Falcon-H1/finetuning/)! 
 - 05/21/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is finally out!
@@ -195,7 +195,7 @@ https://github.com/user-attachments/assets/f4181da9-bebe-4ead-8970-4ff7bef3069d
 
 ## 📊 Performance and Throughput
 
-A detailed dynamic evaluation report is provided in our [blogpost](https://falcon-lm.github.io/blog/falcon-h1/):
+A detailed dynamic evaluation report is provided in our [blogpost](https://falcon-lm.github.io/blog/falcon-h1/) and [technical report](https://arxiv.org/abs/2507.22448):
 
 1. 🏆 We compare the performance of each **Falcon-H1** model against the strongest models not only with the same size but also twice their size.
 2. 📈 We show that Falcon-H1 models achieve state-of-the-art performance in most benchmarks (reasoning, maths, coding, in-context learning, and more), outperforming some closed source models like gpt-4o-mini in coding, reasoning and instruction following related tasks.
@@ -225,12 +225,11 @@ Join the conversation on [Discord](https://discord.gg/trwMYP9PYm), follow us on 
 Feel free to cite our work if you find it useful for your projects:
 
 ```bibtex
-@misc{tiifalconh1,
-    title = {Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance},
-    url = {https://falcon-lm.github.io/blog/falcon-h1},
-    author = {Falcon-LLM Team},
-    month = {May},
-    year = {2025}
+@article{falconh1,
+    title={Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance},
+    author={Jingwei Zuo and Maksim Velikanov and Ilyas Chahed and Younes Belkada and Dhia Eddine Rhayem and Guillaume Kunsch and Hakim Hacid and Hamza Yous and Brahim Farhat and Ibrahim Khadraoui and Mugariya Farooq and Giulia Campesan and Ruxandra Cojocaru and Yasser Djilali and Shi Hu and Iheb Chaabane and Puneesh Khanna and Mohamed El Amine Seddik and Ngoc Dung Huynh and Phuc Le Khac and Leen AlQadi and Billel Mokeddem and Mohamed Chami and Abdalgader Abubaker and Mikhail Lubinets and Kacper Piskorski and Slim Frikha},
+    journal = {arXiv preprint arXiv:2507.22448},
+    year={2025}
 }
 ```
 
