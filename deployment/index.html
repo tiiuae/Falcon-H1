@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Deployment - Falcon H1</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/mono-blue.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Falcon H1</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Deployment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../evaluations/" class="nav-link">Evaluations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../finetuning/" class="nav-link">Fine-Tuning Guidelines</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../post_training_details/" class="nav-link">Our settings</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../evaluations/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#deployment" class="nav-link">Deployment</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#transformers" class="nav-link">🤗 transformers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#vllm" class="nav-link">vLLM</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#llamacpp" class="nav-link">🔧 llama.cpp</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#skypilot" class="nav-link">SkyPilot</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#lm-studio" class="nav-link">Lm-studio</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#jan" class="nav-link">Jan</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#docker-model-api" class="nav-link">Docker Model API</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="deployment">Deployment</h1>
+<p>This page summarizes all the current available tools that you can use for deploying Falcon-H1 series</p>
+<p>Make sure to use Falcon-H1 model in torch.bfloat16 and not torch.float16 for the best performance.</p>
+<h2 id="transformers">🤗 transformers</h2>
+<p>We advise users to install Mamba-SSM from our public fork in order to include <a href="https://github.com/state-spaces/mamba/pull/708">this fix</a>. Note this is optional as we observed that the issue occurs stochastically. </p>
+<pre><code class="language-bash">git clone https://github.com/younesbelkada/mamba.git &amp;&amp; cd mamba/ &amp;&amp; pip install -e . --no-build-isolation
+</code></pre>
+<p>Check <a href="https://github.com/state-spaces/mamba/pull/708">this issue</a> for more details.</p>
+<p>Make sure to install <code>transformers</code> library from source:</p>
+<pre><code class="language-bash">pip install git+https://github.com/huggingface/transformers.git
+</code></pre>
+<p>And use <code>AutoModelForCausalLM</code> interface, e.g.:</p>
+<pre><code class="language-python">import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_id = &quot;tiiuae/Falcon-H1-1B-Base&quot;
+
+model = AutoModelForCausalLM.from_pretrained(
+  model_id,
+  torch_dtype=torch.bfloat16,
+  device_map=&quot;auto&quot;
+)
+
+# Perform text generation
+</code></pre>
+<h2 id="vllm">vLLM</h2>
+<p>For vLLM, simply start a server by executing the command below:</p>
+<pre><code class="language-bash"># pip install vllm
+vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel-size 1
+</code></pre>
+<p><strong>💡 Tip:</strong> Falcon-H1’s default <code>--max-model-len</code> is <strong>262 144</strong> tokens to support very long contexts, but that large window can slow throughput. Set <code>--max-model-len &lt;prompt_len + output_len&gt;</code> (e.g. <code>32768</code>) and cap concurrency with <code>--max-num-seqs &lt;N&gt;</code> (e.g. <code>64</code>) to avoid over-allocating KV-cache memory and speed up generation.</p>
+<h2 id="llamacpp">🔧 llama.cpp</h2>
+<p>Falcon-H1 is natively supported into <code>llama.cpp</code> !</p>
+<p>All official GGUF files can be found on <a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df">our official Hugging Face collection</a>.</p>
+<hr />
+<h4 id="1-prerequisites">1. Prerequisites</h4>
+<ul>
+<li><strong>CMake</strong> ≥ 3.16</li>
+<li>A <strong>C++17</strong>-compatible compiler (e.g., <code>gcc</code>, <code>clang</code>)</li>
+<li><strong>make</strong> or <strong>ninja</strong> build tool</li>
+<li>(Optional) <strong>Docker</strong>, for OpenWebUI integration</li>
+</ul>
+<hr />
+<h4 id="2-clone-build">2. Clone &amp; Build</h4>
+<pre><code class="language-bash"># Clone the Falcon-H1 llama.cpp fork
+git clone https://github.com/ggml-org/llama.cpp
+cd llama.cpp
+
+# Create a build directory and compile
+mkdir build &amp;&amp; cd build
+cmake ..         # Configure the project
+make -j$(nproc)  # Build the binaries
+</code></pre>
+<blockquote>
+<p>Tip: For GPU acceleration, refer to the llama.cpp <a href="https://github.com/ggerganov/llama.cpp#gpu-support">GPU guide</a>.</p>
+</blockquote>
+<hr />
+<h4 id="3-download-a-gguf-model">3. Download a GGUF Model</h4>
+<p>Fetch the desired Falcon-H1 checkpoint from Hugging Face’s collection:</p>
+<pre><code class="language-bash"># Example: download the 1B Instruct model
+wget https://huggingface.co/tiiuae/Falcon-H1-1.5B-Instruct-GGUF/resolve/main/Falcon-H1-1.5B-Instruct-Q5_K.gguf \
+     -P models/
+</code></pre>
+<blockquote>
+<p>All available GGUF files: <a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df">https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df</a></p>
+</blockquote>
+<hr />
+<h4 id="4-run-the-llama-server">4. Run the llama-server</h4>
+<p>Start the HTTP server for inference:</p>
+<pre><code class="language-bash">./build/bin/llama-server \
+  -m models/Falcon-H1-1B-Instruct-Q5_0.gguf \  
+  -c 4096 \                # Context window size
+  --ngl 512 \              # Number of GPU layers (omit if CPU-only)
+  --temp 0.1 \             # Sampling temperature
+  --host 0.0.0.0 \         # Bind address
+  --port 11434             # Listening port
+</code></pre>
+<h4 id="5-web-ui-via-openwebui">5. Web UI via OpenWebUI</h4>
+<p>Use the popular OpenWebUI frontend to chat in your browser:</p>
+<pre><code class="language-bash">docker run -d \
+  --name openwebui-test \
+  -e OPENAI_API_BASE_URL=&quot;http://host.docker.internal:11434/v1&quot; \
+  -p 8888:8888 \
+  ghcr.io/open-webui/open-webui:main
+</code></pre>
+<ol>
+<li>Open your browser at <a href="http://localhost:8888">http://localhost:8888</a></li>
+<li>Select <strong>Falcon-H1-1B-Instruct-Q5_0</strong> from the model list</li>
+<li>Start chatting!</li>
+</ol>
+<hr />
+<blockquote>
+<p>For advanced tuning and custom flags, see the full llama.cpp documentation: <a href="https://github.com/ggerganov/llama.cpp">https://github.com/ggerganov/llama.cpp</a></p>
+</blockquote>
+<h4 id="demo">Demo</h4>
+<p><img alt="" src="https://github.com/user-attachments/assets/f4181da9-bebe-4ead-8970-4ff7bef3069d" /></p>
+<p>We use a MacBook M4 Max Chip and Falcon-H1-1B-Q6_K for this demo.</p>
+<h2 id="skypilot">SkyPilot</h2>
+<p>Refer to <a href="https://github.com/skypilot-org/skypilot/tree/master/llm/falcon_h1">this documentation section</a> for deploying Falcon-H1 series models using Skypilot library.</p>
+<h2 id="lm-studio">Lm-studio</h2>
+<p>First, install lm-studio from <a href="https://lmstudio.ai/">the official website</a> - make sure to select the latest <code>llama.cpp</code> runtime by selecting Developer mode -&gt; "LM Runtimes" (from top left) -&gt; Make sure that <code>llama.cpp</code> version is greater than <code>v1.39.0</code></p>
+<p><img alt="" src="https://github.com/user-attachments/assets/9e20c841-1a93-4ae3-9722-3d50fe3b7ef2" /></p>
+<h2 id="jan">Jan</h2>
+<p>Jan is an open source alternative to ChatGPT that runs 100% offline on your computer - it also support H1 models with minimal configuration steps. First make sure to install the version &gt;=0.6.5, then Navigate to Settings -&gt; Model Providers -&gt; Llama.cpp</p>
+<p><img alt="" src="../assets/jan-screen-settings.png" /></p>
+<p>From there, click on the folder icon to import your own GGUF file and select any H1 GGUF model that you have downloaded locally. After that, switch to the main screen and start chatting with the model !</p>
+<p><img alt="" src="../assets/jan-screen-chat.png" /></p>
+<h2 id="docker-model-api">Docker Model API</h2>
+<p>Docker supports deploying local models with a simple API, you can use Falcon-H1 with Docker Model API starting from Docker Desktop version 4.43.2. </p>
+<p>First make sure to run docker desktop (for Mac devices), then run:</p>
+<pre><code class="language-bash">docker model run hf.co/tiiuae/Falcon-H1-1.5B-Instruct-GGUF
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
