@@ -1,8 +1,30 @@
 # Deployment
 
-This page summarizes all the current available tools that you can use for deploying Falcon-H1 series
+This page summarizes all the currently available tools for deploying **Falcon-H1** models.
 
-Make sure to use Falcon-H1 model in torch.bfloat16 and not torch.float16 for the best performance.
+> 💡 **Tip:** For optimal performance, always use **`torch.bfloat16`** instead of **`torch.float16`**.
+
+---
+
+### ✅ Supported Frameworks
+
+**Falcon-H1** is compatible with most major inference and deployment frameworks, including:
+
+- [Transformers](#transformers)
+- [vLLM](#vllm)
+- [SGLang](#sglang)
+- [llama.cpp](#llamacpp)
+- [SkyPilot](#skypilot)
+- [LM Studio](#lm-studio)
+- [Jan](#jan)
+- [Docker Model API](#docker-model-api)
+
+---
+
+If you encounter any issues or require additional support, please open an issue on our [GitHub repository](https://github.com/tiiuae/Falcon-H1/issues).
+
+---
+
 ## 🤗 transformers
 
 We advise users to install Mamba-SSM from our public fork in order to include [this fix](https://github.com/state-spaces/mamba/pull/708). Note this is optional as we observed that the issue occurs stochastically. 
