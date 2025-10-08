@@ -1,7 +1,9 @@
-![](docs/assets/logo.png)
+<p align="center">
+  <img src="docs/assets/logo.png" alt="Falcon-H1 logo" />
+</p>
 
 <p align="center">
-  <a href="https://chat.falconllm.tii.ae/">🦅 <strong>Falcon-H Chat</strong></a> |
+  <a href="https://chat.falconllm.tii.ae/">🦅 <strong>Falcon-H1 Chat</strong></a> |
   <a href="https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df">🤗 <strong>Hugging Face</strong></a> |
   <a href="https://arxiv.org/abs/2507.22448">📄 <strong>Paper </strong></a> |
   <a href="https://falcon-lm.github.io/blog/falcon-h1/">📰 <strong>Blog</strong></a> |
@@ -12,8 +14,9 @@
 
 ## News
 
-
-- 07/31/2025 The [Technical Report](https://arxiv.org/abs/2507.22448) of Falcon-H1 is now released! ![NEW](https://img.shields.io/badge/NEW-red)
+- 10/02/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into SGLang](https://github.com/sgl-project/sglang)! ![NEW](https://img.shields.io/badge/NEW-red)
+- 09/22/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into MLX](https://github.com/ml-explore/mlx-lm/)!
+- 07/31/2025 The [Technical Report](https://arxiv.org/abs/2507.22448) of Falcon-H1 is now released! 
 - 07/09/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into llama.cpp](https://github.com/ggml-org/llama.cpp)!
 - 06/30/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is now [integrated into several fine-tuning frameworks (axolotl, llama-factory, unsloth)](https://tiiuae.github.io/Falcon-H1/finetuning/)! 
 - 05/21/2025 [Falcon-H1 series](https://huggingface.co/collections/tiiuae/falcon-h1-6819f2795bc406da60fab8df) is finally out!
@@ -29,32 +32,60 @@ We are excited to introduce **Falcon-H1**, the latest evolution in the Falcon fa
 
 ## ✨ Key Highlights
 
-Built by the **Technology Innovation Institute (TII)** in Abu Dhabi, **Falcon-H1** is the latest step in pushing the frontier of hybrid transformer design:
+Built by the **Technology Innovation Institute (TII)** in Abu Dhabi, **Falcon-H1** is the latest step in pushing the frontier of hybrid transformer design.
 
-### 🧩 Hybrid Architecture 
-Each transformer block processes all channels through both **SSM** and **Attention** in parallel, then **sums the outputs**. This allows the model to benefit from both **long-range memory** (via SSMs) and **local/global attention** simultaneously.
+<p align="center">
+  <img src="docs/assets/falcon-h1-architecture.png" alt="Falcon-H1 Architecture" />
+</p>
 
-### 📏 Scalable Sizes 
-Models available at multiple scales or variants: **500M**, **1.5B**, **1.5B-Deep**, **3B**, **7B**, and **34B** parameters.
+### 🧩 Innovative Hybrid Architecture 
+Attention and Mamba2 heads are combined in parallel within our hybrid mixer block. Importantly, the amount of attention and mamba heads can be adjusted independently, allowing for an optimal attention ans SSM ratio. This hybrid design enables faster inference, lower memory usage, and strong geenralization aceoss tasks.
 
-### 🧠 Efficient Reasoning 
-The hybrid structure enhances **reasoning** and **task generalization**.
-  
+### 🧠 Wide Range of Model Sizes 
+Models available at multiple scales or variants: **0.5B**, **1.5B**, **1.5B-Deep**, **3B**, **7B**, and **34B** parameters, supporting diverse usages and deployment scenarios, from edge devices to large-scale systems.
+
 ### 🌐 Multilingual by Design 
-Native training in **18 languages**, with scalability to 100+ languages thanks to our **multilingual tokenizer** trained on diverse language datasets, with strong **zero-shot translation** and **instruction-following** abilities.
+Native training in **18 languages**, including Arabic (ar), Czech (cs), German (de), English (en), Spanish (es), French (fr), Hindi (hi), Italian (it), Japanese (ja), Korean (ko), Dutch (nl), Polish (pl), Portuguese (pt), Romanian (ro), Russian (ru), Swedish (sv), Urdu (ur), and Chinese (zh) — with scalability to 100+ languages, thanks to our **multilingual tokenizer** trained on diverse language datasets, with strong **zero-shot translation** and **instruction-following** abilities.
 
-### 🤖 Instruction-Following and Agent Capabilities 
-Tuned for **instruction following**, **multi-turn conversations**, and already **integrated with major inference engines** such as **vLLM**, **Hugging Face Transformers**, and **llama.cpp** — with more coming soon.
+### 🔥 Compact Models, Big Performance 
+Falcon-H1-0.5B delivers performance on par with typical 7B models from 2024, while Falcon-H1-1.5B-Deep rivals many of the current leading 7B–10B models. Each Falcon-H1 model is designed to match or exceed the performance of models at least twice its size, making them ideal for low-resource and edge deployments without compromising on capability.
+
+### 📏 256K Context Support 
+Falcon-H1 models support up to 256K context length, enabling applications in long-document processing, multi-turn dialogue, and long-range reasoning, with exceptional long context performance and greater computational and memory efficiency, Falcon-H1 provides a great balance between performance and resource cost. 
+
+### 🔬 Robust Data and Training Strategy
+Falcon-H1 employs a redesigned training approach that maximizes the value of high-quality but limited data. Additionally, the training process scales smoothly across model sizes through a customized **Maximal Update Parametrization** ($\mu P$) recipe, specifically adapted for this novel architecture.
+
+### 🤖 Wide Support in Open-source Eco-system 
+Falcon-H1 is compatible with most major training, inference and deployment frameworks, such as **Llama-Factory**, **Unsloth**, **vLLM**, **SGLang**, **Hugging Face Transformers**, **llama.cpp** and **MLX** — with more coming soon.
 
 
 ---
+
+## 📊 Performance and Throughput
+
+A detailed dynamic evaluation report is provided in our [blogpost](https://falcon-lm.github.io/blog/falcon-h1/) and [technical report](https://arxiv.org/abs/2507.22448).
+
+<p align="center">
+  <img src="docs/assets/falcon-h1-perf.png" alt="Falcon-H1 Performance" />
+</p>
+
+<p align="center">
+  <img src="docs/assets/falcon-h1-throughput.png" alt="Falcon-H1 Throughput" />
+</p>
+
+1. 🏆 We show that Falcon-H1 models achieve state-of-the-art performance in most benchmarks (reasoning, maths, coding, in-context learning, and more), outperforming leading open models double their sizes.
+2. 🚀 Falcon-H1-34B achieves up to a **4x improvement in input throughput** and an **8x speedup in output throughput**, compared to similar size Transformer models (Qwen2.5-32B).
+
+---
+
 
 ## 🧭 Where to Start?
 
 We provide the following documentation and resources to begin working with Falcon-H1:
 
 - 💬 **Quick Deploy**: Try Falcon-H1 instantly using our hosted [Chat Interface](https://chat.falconllm.tii.ae/auth) or the [Live Demo from Hugging Face](https://huggingface.co/spaces/tiiuae/Falcon-H1-playground)
-- 🛠️ **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **Transformers**, and **llama.cpp**. 👉 [Deployment Instructions](https://github.com/tiiuae/Falcon-H1/blob/main/docs/deployment.md). Other runtimes are in progress.
+- 🛠️ **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **SGLang**, **Transformers**, and **llama.cpp**. 👉 [Deployment Instructions](https://github.com/tiiuae/Falcon-H1/blob/main/docs/deployment.md). Other runtimes are in progress.
 - ⚙️ **Fine-tuning**: Compatible with most frameworks based on Hugging Face Transformers library, out-of-the-box with **OUMI**, **Llama-Factory**, etc. 👉 [Fine-Tuning Guidelines](https://github.com/tiiuae/Falcon-H1/blob/main/docs/finetuning.md). More framework support coming soon!
 - 💻 **Local Setup**: Full **GGUF** and **HF** formats available. Run it efficiently on both GPU and CPU.
 - 🔬 **Research**: Learn more about our novel hybrid design in the [Falcon-H1 technical report]() (Coming soon).
@@ -62,6 +93,8 @@ We provide the following documentation and resources to begin working with Falco
 ---
 
 ## ⚡ Inference
+
+> 💡 **Tip:** For optimal performance, always use **`torch.bfloat16`** instead of **`torch.float16`**; The recommended **`model temperature`** is **`0.1`** - higher than that, model's performance may largely drop.
 
 Make sure to install the latest version of `transformers` or `vllm`, eventually install these packages from source:
 
@@ -223,27 +256,6 @@ Model:Falcon-H1-1B-Q6_K
 
 https://github.com/user-attachments/assets/f4181da9-bebe-4ead-8970-4ff7bef3069d
 
-
----
-
-## 📊 Performance and Throughput
-
-A detailed dynamic evaluation report is provided in our [blogpost](https://falcon-lm.github.io/blog/falcon-h1/) and [technical report](https://arxiv.org/abs/2507.22448):
-
-1. 🏆 We compare the performance of each **Falcon-H1** model against the strongest models not only with the same size but also twice their size.
-2. 📈 We show that Falcon-H1 models achieve state-of-the-art performance in most benchmarks (reasoning, maths, coding, in-context learning, and more), outperforming some closed source models like gpt-4o-mini in coding, reasoning and instruction following related tasks.
-
-The blog post also features a dedicated section comparing Falcon-H1's inference speed to leading attention-based models, across a wide range of sequence lengths, prefillinng and generation scenarios.
-
----
-
-## 📦 Falcon-H1 Features at a Glance
-
-- 🔄 **Parallel Hybrid Blocks**: Attention + SSM in every layer.
-- 🌍 **100+ Languages Supported**: Multilingual instruction, chat, and translation.
-- 📏 **Scalable Sizes**: From **0.5B** to **34B**.
-- 🧩 **Full Ecosystem Integration**: Runs on widely used inference stacks and supports common file formats (**HF**, **GGUF**).
-- 🔋 **Quantized + Fine-tune Friendly**: Models available in **8-bit**, **4-bit**, and standard **FP16**.
 
 ---
 
