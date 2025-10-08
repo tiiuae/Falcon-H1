@@ -88,7 +88,7 @@ We provide the following documentation and resources to begin working with Falco
 - 🛠️ **Inference Toolkits**: Compatible out-of-the-box with **vLLM**, **SGLang**, **Transformers**, and **llama.cpp**. 👉 [Deployment Instructions](https://github.com/tiiuae/Falcon-H1/blob/main/docs/deployment.md). Other runtimes are in progress.
 - ⚙️ **Fine-tuning**: Compatible with most frameworks based on Hugging Face Transformers library, out-of-the-box with **OUMI**, **Llama-Factory**, etc. 👉 [Fine-Tuning Guidelines](https://github.com/tiiuae/Falcon-H1/blob/main/docs/finetuning.md). More framework support coming soon!
 - 💻 **Local Setup**: Full **GGUF** and **HF** formats available. Run it efficiently on both GPU and CPU.
-- 🔬 **Research**: Learn more about our novel hybrid design in the [Falcon-H1 technical report]() (Coming soon).
+- 🔬 **Research**: Learn more about our novel hybrid design in the [Falcon-H1 technical report](https://arxiv.org/abs/2507.22448).
 
 ---
 
