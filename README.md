@@ -94,6 +94,8 @@ We provide the following documentation and resources to begin working with Falco
 
 ## ⚡ Inference
 
+> 💡 **Tip:** For optimal performance, always use **`torch.bfloat16`** instead of **`torch.float16`**; The recommended **`model temperature`** is **`0.1`** - higher than that, model's performance may largely drop.
+
 Make sure to install the latest version of `transformers` or `vllm`, eventually install these packages from source:
 
 ```bash

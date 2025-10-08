@@ -2,7 +2,7 @@
 
 This page summarizes all the currently available tools for deploying **Falcon-H1** models.
 
-> 💡 **Tip:** For optimal performance, always use **`torch.bfloat16`** instead of **`torch.float16`**.
+> 💡 **Tip:** For optimal performance, always use **`torch.bfloat16`** instead of **`torch.float16`**; The recommended **`model temperature`** is **`0.1`** - higher than that, model's performance may largely drop.
 
 ---
 
@@ -69,6 +69,38 @@ vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel
 ```
 
 **💡 Tip:** Falcon-H1’s default `--max-model-len` is **262 144** tokens to support very long contexts, but that large window can slow throughput. Set `--max-model-len <prompt_len + output_len>` (e.g. `32768`) and cap concurrency with `--max-num-seqs <N>` (e.g. `64`) to avoid over-allocating KV-cache memory and speed up generation.
+
+### ⚙️ SGLang
+
+[SGLang](https://github.com/sgl-project/sglang) provides a high-performance serving runtime with native Falcon-H1 kernels.
+Follow the steps below to spin up a Falcon-H1 endpoint:
+
+```bash
+# 1. Install the runtime (requires an NVIDIA GPU with FlashInfer-compatible CUDA drivers)
+pip install uv
+uv pip install "sglang[all]>=0.5.3"
+
+# 2. Launch Falcon-H1 with SGLang (replace <your_token> with a Hugging Face token)
+HF_TOKEN=<your_token> python -m sglang.launch_server \
+  --model-path tiiuae/Falcon-H1-7B-Instruct \
+  --host 0.0.0.0 \
+  --port 30000 \
+  --trust-remote-code
+```
+
+You can now call the OpenAI-compatible endpoint exposed on `http://localhost:30000`:
+
+```bash
+curl http://localhost:30000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "tiiuae/Falcon-H1-7B-Instruct",
+    "messages": [
+      {"role": "system", "content": "You are Falcon-H1."},
+      {"role": "user", "content": "Give me a fun fact about falcons."}
+    ]
+  }'
+```
 
 ## 🔧 llama.cpp
 
