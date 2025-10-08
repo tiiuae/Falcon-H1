@@ -113,7 +113,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # Load the model
-model_id = "tiiuae/Falcon-H1-1B-Base"
+model_id = "tiiuae/Falcon-H1-1.5B-Base"
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
     torch_dtype=torch.bfloat16,
@@ -129,11 +129,30 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 ### 🚄 vLLM
 
 [vLLM](https://github.com/vllm-project/vllm) is a high-throughput and memory-efficient inference and serving engine for LLMs.
-To run Falcon-H1 models, you can refer to the following command:
+To run Falcon-H1 models with the recommended precision and sampling defaults:
 
 ```bash
 # pip install vllm
-vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel-size 1
+vllm serve tiiuae/Falcon-H1-1.5B-Instruct \
+  --tensor-parallel-size 2 \
+  --data-parallel-size 1 \
+  --dtype bfloat16 \
+  --port 8000
+```
+
+Then send requests with the target temperature:
+
+```bash
+curl http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "tiiuae/Falcon-H1-1.5B-Instruct",
+    "temperature": 0.1,
+    "messages": [
+      {"role": "system", "content": "You are Falcon-H1."},
+      {"role": "user", "content": "Give me a fun fact about falcons."}
+    ]
+  }'
 ```
 
 ### ⚙️ SGLang
@@ -149,6 +168,7 @@ uv pip install "sglang[all]>=0.5.3"
 # 2. Launch Falcon-H1 with SGLang (replace <your_token> with a Hugging Face token)
 HF_TOKEN=<your_token> python -m sglang.launch_server \
   --model-path tiiuae/Falcon-H1-7B-Instruct \
+  --dtype bfloat16 \
   --host 0.0.0.0 \
   --port 30000 \
   --trust-remote-code
@@ -161,6 +181,7 @@ curl http://localhost:30000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "tiiuae/Falcon-H1-7B-Instruct",
+    "temperature": 0.1,
     "messages": [
       {"role": "system", "content": "You are Falcon-H1."},
       {"role": "user", "content": "Give me a fun fact about falcons."}
@@ -222,7 +243,7 @@ Start the HTTP server for inference:
 
 ```bash
 ./build/bin/llama-server \
-  -m models/Falcon-H1-1B-Instruct-Q5_0.gguf \
+  -m models/Falcon-H1-1.5B-Instruct-Q5_0.gguf \
   -c 4096 \
   -ngl 512 \
   --temp 0.1 \
@@ -242,7 +263,7 @@ docker run -d \
 ```
 
 1. Open your browser at [http://localhost:8888](http://localhost:8888)
-2. Select **Falcon-H1-1B-Instruct-Q5\_0** from the model list
+2. Select **Falcon-H1-1.5B-Instruct-Q5\_0** from the model list
 3. Start chatting!
 
 ---
@@ -252,7 +273,7 @@ docker run -d \
 
 Demo
 Hardware: MacBook M4 Max Chip
-Model:Falcon-H1-1B-Q6_K
+Model:Falcon-H1-1.5B-Q6_K
 
 https://github.com/user-attachments/assets/f4181da9-bebe-4ead-8970-4ff7bef3069d
 
