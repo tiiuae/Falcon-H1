@@ -25,7 +25,7 @@ If you encounter any issues or require additional support, please open an issue 
 
 ---
 
-## 🤗 transformers
+## Transformers
 
 We advise users to install Mamba-SSM from our public fork in order to include [this fix](https://github.com/state-spaces/mamba/pull/708). Note this is optional as we observed that the issue occurs stochastically. 
 
@@ -70,7 +70,7 @@ vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel
 
 **💡 Tip:** Falcon-H1’s default `--max-model-len` is **262 144** tokens to support very long contexts, but that large window can slow throughput. Set `--max-model-len <prompt_len + output_len>` (e.g. `32768`) and cap concurrency with `--max-num-seqs <N>` (e.g. `64`) to avoid over-allocating KV-cache memory and speed up generation.
 
-### ⚙️ SGLang
+## SGLang
 
 [SGLang](https://github.com/sgl-project/sglang) provides a high-performance serving runtime with native Falcon-H1 kernels.
 Follow the steps below to spin up a Falcon-H1 endpoint:
@@ -102,7 +102,8 @@ curl http://localhost:30000/v1/chat/completions \
   }'
 ```
 
-## 🔧 llama.cpp
+<a name="llamacpp"></a>
+## llama.cpp
 
 Falcon-H1 is natively supported into `llama.cpp` !
 
