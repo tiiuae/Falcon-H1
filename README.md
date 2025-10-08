@@ -103,6 +103,38 @@ To run Falcon-H1 models, you can refer to the following command:
 vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel-size 1
 ```
 
+### ⚙️ SGLang
+
+[SGLang](https://github.com/sgl-project/sglang) provides a high-performance serving runtime with native Falcon-H1 kernels.
+Follow the steps below to spin up a Falcon-H1 endpoint:
+
+```bash
+# 1. Install the runtime (requires an NVIDIA GPU with FlashInfer-compatible CUDA drivers)
+pip install uv
+uv pip install "sglang[all]>=0.5.3"
+
+# 2. Launch Falcon-H1 with SGLang (replace <your_token> with a Hugging Face token)
+HF_TOKEN=<your_token> python -m sglang.launch_server \
+  --model-path tiiuae/Falcon-H1-7B-Instruct \
+  --host 0.0.0.0 \
+  --port 30000 \
+  --trust-remote-code
+```
+
+You can now call the OpenAI-compatible endpoint exposed on `http://localhost:30000`:
+
+```bash
+curl http://localhost:30000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "tiiuae/Falcon-H1-7B-Instruct",
+    "messages": [
+      {"role": "system", "content": "You are Falcon-H1."},
+      {"role": "user", "content": "Give me a fun fact about falcons."}
+    ]
+  }'
+```
+
 ### 🔧 llama.cpp
 
 Falcon-H1 is now natively supported into `llama.cpp` !
