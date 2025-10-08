@@ -129,11 +129,30 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 ### 🚄 vLLM
 
 [vLLM](https://github.com/vllm-project/vllm) is a high-throughput and memory-efficient inference and serving engine for LLMs.
-To run Falcon-H1 models, you can refer to the following command:
+To run Falcon-H1 models with the recommended precision and sampling defaults:
 
 ```bash
 # pip install vllm
-vllm serve tiiuae/Falcon-H1-1B-Instruct --tensor-parallel-size 2 --data-parallel-size 1
+vllm serve tiiuae/Falcon-H1-1B-Instruct \
+  --tensor-parallel-size 2 \
+  --data-parallel-size 1 \
+  --dtype bfloat16 \
+  --port 8000
+```
+
+Then send requests with the target temperature:
+
+```bash
+curl http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "tiiuae/Falcon-H1-1B-Instruct",
+    "temperature": 0.1,
+    "messages": [
+      {"role": "system", "content": "You are Falcon-H1."},
+      {"role": "user", "content": "Give me a fun fact about falcons."}
+    ]
+  }'
 ```
 
 ### ⚙️ SGLang
@@ -149,6 +168,7 @@ uv pip install "sglang[all]>=0.5.3"
 # 2. Launch Falcon-H1 with SGLang (replace <your_token> with a Hugging Face token)
 HF_TOKEN=<your_token> python -m sglang.launch_server \
   --model-path tiiuae/Falcon-H1-7B-Instruct \
+  --dtype bfloat16 \
   --host 0.0.0.0 \
   --port 30000 \
   --trust-remote-code
@@ -161,6 +181,7 @@ curl http://localhost:30000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "tiiuae/Falcon-H1-7B-Instruct",
+    "temperature": 0.1,
     "messages": [
       {"role": "system", "content": "You are Falcon-H1."},
       {"role": "user", "content": "Give me a fun fact about falcons."}
