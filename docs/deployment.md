@@ -102,6 +102,22 @@ curl http://localhost:30000/v1/chat/completions \
   }'
 ```
 
+## Apple MLX
+
+Falcon-H1 is natively supported into Apple MLX ! Simply do:
+
+```
+pip install -U mlx-lm
+```
+
+Then run:
+
+```
+mlx_lm.generate --model tiiuae/Falcon-H1-0.5B-Instruct --prompt "Implement bubble sort from scratch" --max-tokens 100 --temp 0.7
+```
+
+![](assets/mlx-screen.png)
+
 <a name="llamacpp"></a>
 ## llama.cpp
 
