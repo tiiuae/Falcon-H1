@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Our settings - Falcon H1</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/mono-blue.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Falcon H1</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../deployment/" class="nav-link">Deployment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../evaluations/" class="nav-link">Evaluations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../finetuning/" class="nav-link">Fine-Tuning Guidelines</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Our settings</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../finetuning/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#our-settings" class="nav-link">Our settings</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#sft" class="nav-link">SFT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#dpo" class="nav-link">DPO</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="our-settings">Our settings</h1>
+<p>Here we describe a short description of the procedure we have used for post-training of Falcon-H1 models. We had two stages: SFT followed by DPO. We provide this as a reference and a possible starting point for the community to fine-tune Falcon-H1 models.</p>
+<h2 id="sft">SFT</h2>
+<p>Our SFT had a main 16k stage for 3 GigaTokens (GT), followed by 3GT of 128k long context stage. In the main 16k stage, we have used WSD learning rate schedule with exponential shape of the decay stage reducing the learning rate 8 times: $\eta_\mathrm{min}=\eta/8$. Then, the 128k stage continued with constant LR equal to the minimal WSD learning rate $\eta_\mathrm{min}$ of the 16k stage. Also, for our smallest 0.5B model, we did not perform the 128k stage due limited capacity of small models in processing long sequences. </p>
+<p>In terms of the data mix, we have various open-source SFT datasets as well as our internal ones, with Tulu3 serving as the basis of the mix with a 50% sampling weight. Importantly, after fixing the weight of each source in the mixture, we did not construct a single mixed dataset but instead sampled from each source independently. As a result, different data sources were repeated for different amounts of time (i.e. epochs) during the SFT stage. For example, Tulu3 with 50% weight had $\approx$ 1.7GT epoch size, resulting in $\approx3.5$ epochs during the whole 6GT duration of SFT. Tulu3 was the most repeated data source, with many of the other sources having  $\lesssim 2$ epochs, and hence little or no repetition at all. We hope that this information will be useful in making decisions on fine-tuning duration given the size of the fine-tuning dataset in a given use case.  </p>
+<p>We summarize the main parameter of our SFT setting in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Hyperparameter / Setting</th>
+<th>Value / Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sequence Length</td>
+<td>16k for the main stage; 128k for long context stage</td>
+</tr>
+<tr>
+<td>Batch size $b$</td>
+<td>1 million tokens (MT)</td>
+</tr>
+<tr>
+<td>Learning Rate $\eta$</td>
+<td>$128\times 10^{-6}$</td>
+</tr>
+<tr>
+<td>AdamW parameters</td>
+<td>$\beta_1=0.9$; $\beta_2=0.95$, no weight decay</td>
+</tr>
+<tr>
+<td>Learning rate schedule</td>
+<td>WSD: 50MT warmup, 1.5GT stable, 1.5GT decay</td>
+</tr>
+<tr>
+<td>LR Decay</td>
+<td>exponential schedule from $\eta$ to $\eta_\mathrm{min}=\eta/8$</td>
+</tr>
+<tr>
+<td>Long context stage</td>
+<td>+3GT at then end of WSD with minimal LR $\eta_\mathrm{min}$</td>
+</tr>
+<tr>
+<td># epochs for each data source</td>
+<td>$\lesssim 3.5$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="difference-between-model-sizes">Difference between model sizes</h3>
+<p>Up to this point, we have described the single setting for all the model sizes, from 0.5B to 34B (with the exception of no 128k stage for 0.5B). To a large extent, a single setting is possible due to the use of maximal-update-parametrization (μP) that tries to ensure that training dynamics stay roughly the same between different model sizes by scaling Hyperparameters with μP scaling rules. Our implementation of μP uses scaling multipliers directly in the forward pass of the model and therefore does not require scaling the learning rate across the model sizes. We plan to provide the script of how we scale different μP multipliers with the model's tensor shapes in the near future.  </p>
+<p>One parameter that we have changed significantly across model sizes was batch size. In the ablation studies, we have noticed that different batch sizes in the range from 0.25MT to 4MT have little impact on the SFT results, with smaller batch sizes being only slightly better in some scenarios. Therefore, we were mostly choosing batch size for each model to optimally distribute compute nodes across different model sizes to ensure the timely completion of the SFT stage. For example, longcontext 128k stage was slow due to context parallelism and therefore required larger batch sizes to allow for larger data parallelism (DP) degrees. </p>
+<p>However, different batch sizes have different optimal learning rates. We minimize the effect of the shifting of the optimal LR with <em>Adam batch scaling</em> that keeps $\frac{\eta}{\sqrt{b}}$ constant when changing batch size. Specifically, at each batch size $b$ we were setting the maximal LR of the WSD schedule according to </p>
+<p>$$\eta(b) = \eta_\mathrm{ref}\sqrt{\frac{b}{b_\mathrm{ref}}},$$</p>
+<p>where $\eta_\mathrm{ref}=128\times10^{-6}$ and $b_\mathrm{ref}=$ 1MT are the values we previously mentioned in the table. This scaling captures most of the optimal LR shift and removes the need to re-tune LR for each new batch size. We are expecting that with Adam scaling, researchers and developers finetuning Falcon-H1 models can use our hyperparameters as a good starting point, most importantly learning rate, while keeping the batch size more suitable for their scenario.   </p>
+<h2 id="dpo">DPO</h2>
+<p>We use a fork of AllenAI open-instruct repo. Similarly to the SFT stage, we constructed our data mix based on Tulu3 plus a few additional open-source datasets. We used standard DPO loss (<code>dpo_loss_type: dpo_norm</code>) and the same hyperparameters outlined below</p>
+<table>
+<thead>
+<tr>
+<th>Hyperparameter / Setting</th>
+<th>Value / Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch size</td>
+<td>256</td>
+</tr>
+<tr>
+<td>Learning rate</td>
+<td>$5\times 10^{-6}$</td>
+</tr>
+<tr>
+<td>Learning rate schedule</td>
+<td>Linear to zero over 2 epochs, warmup ratio 0.1</td>
+</tr>
+<tr>
+<td>DPO loss parameters</td>
+<td>$\beta=5$</td>
+</tr>
+<tr>
+<td>AdamW parameters</td>
+<td>pytorch default ($\beta_1=0.9$, $\beta_2=0.999$)</td>
+</tr>
+</tbody>
+</table>
+<p>Importantly, for our final checkpoints we were stopping the training not at 2 epochs, corresponding to the end of the linear schedule, but at approriximately 1 epoch. We have found this strategy to work better than taking the last checkpoint at 2 epochs or using linear scheduler that finishes at 1 epoch.  </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
