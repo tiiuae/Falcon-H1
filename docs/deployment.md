@@ -13,6 +13,7 @@ This page summarizes all the currently available tools for deploying **Falcon-H1
 - [Transformers](#transformers)
 - [vLLM](#vllm)
 - [SGLang](#sglang)
+- [Apple MLX](#apple-mlx)
 - [llama.cpp](#llamacpp)
 - [SkyPilot](#skypilot)
 - [LM Studio](#lm-studio)
